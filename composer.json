@@ -1,30 +1,30 @@
 {
-  "name": "DigitalState/Platform-Transport-Bundle",
-  "type": "symfony-bundle",
-  "description": "Digital State Transport Bundle",
-  "homepage": "https://github.com/DigitalState/Platform-Transport-Bundle.git",
-  "keywords": ["Oro", "Communication"],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Digital State, Inc",
-      "homepage": "http://www.digitalState.ca"
+    "name": "digitalstate/platform-transport-bundle",
+    "type": "symfony-bundle",
+    "description": "DigitalState Transport Bundle",
+    "homepage": "https://github.com/DigitalState/Platform-Transport-Bundle.git",
+    "keywords": ["Oro", "Communication"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "DigitalState, Inc",
+            "homepage": "http://www.digitalstate.ca"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "digitalstate/platform-admin-bundle" : "dev-master",
+        "digitalstate/platform-entity-bundle" : "dev-master",
+        "digitalstate/platform-widget-bundle" : "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Ds\\Bundle\\TransportBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.6",
-    "DigitalState/Platform-Admin-Bundle" : "dev-master",
-    "DigitalState/Platform-Entity-Bundle" : "dev-master",
-    "DigitalState/Platform-Widget-Bundle" : "dev-master"
-  },
-  "autoload": {
-    "psr-0": { "Ds\\Bundle\\TransportBundle": "" }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.x-dev"
-    }
-  }
 }
