@@ -30,7 +30,7 @@ interface Transport
      *
      * @param \Ds\Bundle\TransportBundle\Model\Message $message
      * @param \Ds\Bundle\TransportBundle\Entity\Profile $profile
-     * @return \Ds\Bundle\TransportBundle\Transport\Transport
+     * @return \Ds\Bundle\TransportBundle\Model\Message
      * @throws \LogicException
      * @throws \UnexpectedValueException
      */

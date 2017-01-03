@@ -2,37 +2,79 @@
 
 namespace Ds\Bundle\TransportBundle\Model;
 
+use Ds\Bundle\EntityBundle\Entity\Attribute;
+
 /**
  * Class Message
  */
 class Message
 {
-    /**
-     * @var string
-     */
-    protected $to; # region accessors
+    const STATUS_UNKNOWN = 'unknown';
+
+    const STATUS_QUEUED = 'queued';
+
+    const STATUS_SENDING = 'sending';
+
+    const STATUS_SENT = 'sent';
+
+    const STATUS_CANCELLED = 'cancelled';
+
+    const STATUS_FAILED = 'failed';
+
+    use Attribute\SentAt;
+    use \Ds\Bundle\TransportBundle\Entity\Attribute\DeliveryStatus;
+
+    protected $message_uid = ''; #region accessors
 
     /**
-     * Set to
+     * @return string
+     */
+    public function getMessageUID()
+    {
+        return $this->message_uid;
+    }
+
+    /**
+     * @param string $message_uid
      *
-     * @param string $to
+     * @return Message
+     */
+    public function setMessageUID(string $message_uid)
+    {
+        $this->message_uid = $message_uid;
+
+        return $this;
+    }
+    # endregion
+
+
+    /**
+     * @var mixed
+     */
+    protected $recipient; # region accessors
+
+    /**
+     * Set recipient
+     *
+     * @param mixed $recipient
+     *
      * @return \Ds\Bundle\TransportBundle\Model\Message
      */
-    public function setTo($to)
+    public function setRecipient($recipient)
     {
-        $this->to = $to;
+        $this->recipient = $recipient;
 
         return $this;
     }
 
     /**
-     * Get to
+     * Get recipient
      *
-     * @return string
+     * @return mixed
      */
-    public function getTo()
+    public function getRecipient()
     {
-        return $this->to;
+        return $this->recipient;
     }
 
     # endregion
@@ -46,6 +88,7 @@ class Message
      * Set from
      *
      * @param string $from
+     *
      * @return \Ds\Bundle\TransportBundle\Model\Message
      */
     public function setFrom($from)
@@ -76,6 +119,7 @@ class Message
      * Set title
      *
      * @param string $title
+     *
      * @return \Ds\Bundle\TransportBundle\Model\Message
      */
     public function setTitle($title)
@@ -106,6 +150,7 @@ class Message
      * Set content
      *
      * @param string $content
+     *
      * @return \Ds\Bundle\TransportBundle\Model\Message
      */
     public function setContent($content)
