@@ -19,7 +19,7 @@
         "digitalstate/platform-widget-bundle" : "dev-master"
     },
     "autoload": {
-        "psr-0": { "Ds\\Bundle\\TransportBundle": "" }
+        "psr-4": { "Ds\\Bundle\\TransportBundle\\": "" }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
