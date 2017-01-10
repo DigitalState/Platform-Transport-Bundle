@@ -1,6 +1,6 @@
 # Platform-Transport-Bundle
 
-The Transport bundle provides the foundation and common API for sending messages programmatically. It introduces two new entities to the system: Transport and Profile.
+The Transport bundle provides the developers the foundation and common API for sending messages programmatically. It introduces two new entities to the system: [Transport](Entity/Transport.php) and [Profile](Entity/Profile.php).
 
 ## Table of Contents
 
