@@ -1,18 +1,20 @@
 # Platform-Transport-Bundle
 
-The Transport bundle provides the foundation and common api for sending messages programmatically. It introduces two new entities to the system: Transport and Profile.
+The Transport bundle provides the foundation and common API for sending messages programmatically. It introduces two new entities to the system: Transport and Profile.
 
 ## Table of Contents
 
-- [Transport Definition](#transport-definition)
-- [Profile Definition](#profile-definition)
+- [Transport Entity](#transport-entity)
+- [Profile Entity](#profile-entity)
 - [Todo](#todo)
 
-## Transport Definition
+## Transport Entity
 
 Transports are in charge of sending messages to recipients. For example, the developer could define a Transport that knows how to send messages via Twilio SMS.
 
-Internally, each Transport are associated with an actual code implementation. To create a Transport class implementation, the developer needs to implement the [Transport Interface](Transport/Transport.php).
+Internally, each Transport is associated with a PHP class. To create a Transport class, the developer needs to implement the [Transport Interface](Transport/Transport.php).
+
+**Example** `src/Gov/Bundle/DemoBundle/Transport/Sms/TwilioTransport.php`:
 
 ```php
 <?php
@@ -44,7 +46,9 @@ class TwilioTransport implements Transport
 }
 ```
 
-Also, a Transport class implementation needs to be registered as a service in the Symfony Service Container and be tagged with the `ds.transport` tag.
+A Transport class needs to be registered as a service in the Symfony Service Container and be tagged with the `ds.transport` tag.
+
+**Example** `src/Gov/Bundle/DemoBundle/Resources/config/services.yml`:
 
 ```yml
 services:
@@ -56,10 +60,10 @@ services:
 
 *The `implementation` attribute is a string value that identifies programmatically a Transport and should be unique.*
 
-## Profile Definition
+## Profile Entity
 
-A Profile is associated to a Transport and defines the configurations needed by that Transport. Configurations such as hostname, username, password, api key, secret key, etc. For example, a manager could create a Profile via the administrative interface, associate it with the Twilio Transport created previously and provide the needed configurations such as the Twilio api key and credentials.
+A Profile is associated to a Transport and defines the configurations needed by that Transport. Configurations such as hostname, username, password, api key, secret key, etc. For example, a business user could create a Profile via the administrative interface, associate it with the Twilio Transport and provide the needed configurations such as the Twilio api key and credentials.
 
-It is possible to create multiple Profiles for a single Transport. The manager may eventually choose which Profile to use when sending a specific message.
+It is possible to create multiple Profiles for a single Transport. The business user may eventually choose which Profile to use when sending a specific message. For example, Twilio provides different account credentials based on the different geographic areas you want to send messages from.
 
 ## Todo
