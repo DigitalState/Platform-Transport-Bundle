@@ -44,7 +44,7 @@ class TwilioTransport implements Transport
 }
 ```
 
-Also, a Transport class implementation needs to be tagged with the `ds.transport` tag.
+Also, a Transport class implementation needs to be registered as a service in the Symfony Service Container and be tagged with the `ds.transport` tag.
 
 ```yml
 services:
