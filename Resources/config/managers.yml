@@ -11,3 +11,10 @@ services:
         arguments:
             - Ds\Bundle\TransportBundle\Entity\Transport
             - @doctrine.orm.entity_manager
+
+
+    ds.transport.manager.webhook:
+        class: Ds\Bundle\TransportBundle\Manager\WebHookManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @ds.transport.collection.transport

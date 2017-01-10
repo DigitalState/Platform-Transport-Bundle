@@ -1,0 +1,6 @@
+security:
+    firewalls:
+        ds_transport_webhook:
+            pattern:   ^/transport/profile/webhook
+            provider:  chain_provider
+            anonymous: true
