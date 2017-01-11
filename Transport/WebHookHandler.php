@@ -12,14 +12,20 @@ use Symfony\Component\HttpFoundation\Request;
  */
 interface WebHookHandler
 {
-
-
     /**
      * @param Request $request
      *
      * @return string[]|null
      */
-    public function validateInput(Request  $request);
+    public function parseRequest(Request  $request);
+
+
+    /**
+     * @param WebHookData $webHookData
+     *
+     * @return string|null
+     */
+    public function getMessageUID(WebHookData $webHookData);
 
 
     /**
@@ -27,5 +33,5 @@ interface WebHookHandler
      *
      * @return bool
      */
-    public function process(WebHookData $webHookData);
+    public function createEvent(WebHookData $webHookData);
 }

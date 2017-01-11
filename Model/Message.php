@@ -19,6 +19,8 @@ class Message
 
     const STATUS_CANCELLED = 'cancelled';
 
+    const STATUS_OPEN = 'open';
+
     const STATUS_FAILED = 'failed';
 
     use Attribute\SentAt;

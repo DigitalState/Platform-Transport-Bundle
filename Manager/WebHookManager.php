@@ -68,7 +68,7 @@ class WebHookManager
      *
      * @return WebHookHandler
      */
-    private function getTransport(Profile $profile)
+    public function getHandler(Profile $profile)
     {
         /** @var WebHookHandler $transport */
         $transport = $this->transportCollection->filter(function ($item) use ($profile)
@@ -87,9 +87,9 @@ class WebHookManager
 
     public function handleWehHook(Profile $profile, Request $request)
     {
-        $transport = $this->getTransport($profile);
+        $handler = $this->getHandler($profile);
 
-        $hookData = $transport->validateInput($request);
+        $hookData = $handler->parseRequest($request);
 
         if ($hookData === null)
             return;
@@ -115,30 +115,4 @@ class WebHookManager
     }
 
 
-    public function processWebHooks($limit = 1000)
-    {
-        // @todo use itterable results
-        $results = $this->om
-            ->getRepository('DsTransportBundle:WebHookData')
-            ->findBy([
-                         'processed' => false,
-                     ]);
-
-        /** @var WebHookData $result */
-        foreach ($results as $webHookData)
-        {
-            $profile = $webHookData->getProfile();
-
-            $transport = $this->getTransport($profile);
-
-            $processed = $transport->process($webHookData);
-
-            $webHookData->setProcessed($processed);
-
-            $this->om->persist($webHookData);
-        }
-
-        $this->om->flush();
-
-    }
 }
