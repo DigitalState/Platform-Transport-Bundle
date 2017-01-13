@@ -2,7 +2,7 @@
 
 namespace Ds\Bundle\TransportBundle\Controller\Api\Rest;
 
-use Oro\Bundle\SoapBundle\Controller\Api\Rest\RestController;
+use Ds\Bundle\ApiBundle\Controller\Api\Rest\AbstractController;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\Annotations\NamePrefix;
@@ -17,7 +17,7 @@ use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
  * @Route("/transport")
  * @NamePrefix("ds_transport_api_rest_")
  */
-class ProfileController extends RestController
+class ProfileController extends AbstractController
 {
     /**
      * Get collection action
@@ -106,5 +106,20 @@ class ProfileController extends RestController
     public function getManager()
     {
         return $this->get('ds.transport.manager.profile');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function transformEntityField($field, &$value)
+    {
+        switch ($field) {
+            case 'transport':
+                $value = $this->transformEntityToId($value);
+                break;
+
+            default:
+                parent::transformEntityField($field, $value);
+        }
     }
 }
