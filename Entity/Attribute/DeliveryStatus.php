@@ -20,6 +20,7 @@ trait DeliveryStatus
             || $status == 'queued'
             || $status == 'sending'
             || $status == 'sent'
+            || $status == 'open'
             || $status == 'cancelled'
             || $status == 'failed';
     }
