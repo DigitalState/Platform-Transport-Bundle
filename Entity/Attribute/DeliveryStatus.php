@@ -17,6 +17,7 @@ trait DeliveryStatus
     public static function isValidDeliveryStatus($status)
     {
         return $status == 'unknown'
+            || $status == 'processing'
             || $status == 'queued'
             || $status == 'sending'
             || $status == 'sent'
@@ -49,6 +50,7 @@ trait DeliveryStatus
     {
         if ( !self::isValidDeliveryStatus($deliveryStatus))
             throw new \InvalidArgumentException();
+
         $this->deliveryStatus = $deliveryStatus;
 
         return $this;

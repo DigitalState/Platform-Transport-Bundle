@@ -9,18 +9,52 @@ use Ds\Bundle\EntityBundle\Entity\Attribute;
  */
 class Message
 {
-    const STATUS_UNKNOWN = 'unknown';
 
+    /**
+     * Message is in a unknown state, this should probably cause some asserts to fire...
+     */
+    const STATUS_UNKNOWN = '';
+
+    /**
+     * The message has been added as being ready to be process and delivered
+     * Next steps : PROCESSING, FAILED, CANCELLED
+     */
     const STATUS_QUEUED = 'queued';
 
+    /**
+     * The message is currently being processed, either being generated, or given to the Transport
+     * Next steps: SENDING, SENT, FAILED
+     */
+    const STATUS_PROCESSING = 'processing';
+
+    /**
+     * The message respondability is not in the hands of the Transport which is expected to deliver it
+     * Next steps: SENT, FAILED
+     */
     const STATUS_SENDING = 'sending';
 
+    /**
+     * The message was sent, and the Transport confirmed that the message has left the Transport servers
+     * Next steps:  OPEN, FAILED
+     */
     const STATUS_SENT = 'sent';
 
+    /**
+     * The delivery of this message has been cancelled for some reason.
+     * Next steps:   This is a final state
+     */
     const STATUS_CANCELLED = 'cancelled';
 
+    /**
+     * The message was opened by the recipient,
+     * Next steps:   This is a final state
+     */
     const STATUS_OPEN = 'open';
 
+    /**
+     * The generation or delivery has failed, or the message bounced. AKA The recipient did not received the message
+     * Next steps:   This is a final state
+     */
     const STATUS_FAILED = 'failed';
 
     use Attribute\SentAt;
