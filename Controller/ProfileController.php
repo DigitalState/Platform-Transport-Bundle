@@ -8,7 +8,6 @@ use Ds\Bundle\TransportBundle\Entity\Profile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
-use Twilio\Rest\Api\V2010\Account\MessageList;
 
 /**
  * Class ProfileController
