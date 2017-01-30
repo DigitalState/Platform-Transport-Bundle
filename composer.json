@@ -15,8 +15,12 @@
         "php": ">=5.6",
         "oro/platform": "1.10.*",
         "digitalstate/platform-admin-bundle" : "~0.1.0",
+        "digitalstate/platform-api-bundle" : "~0.1.0",
         "digitalstate/platform-entity-bundle" : "~0.1.0",
         "digitalstate/platform-widget-bundle" : "~0.1.0"
+    },
+    "suggest":{
+        "SDDProductions/SDDSparkPostTransportBundle" : "Add SparkPost Transport capabilities"
     },
     "autoload": {
         "psr-4": { "Ds\\Bundle\\TransportBundle\\": "" }

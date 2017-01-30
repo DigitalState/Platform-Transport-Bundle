@@ -5,6 +5,9 @@ namespace Ds\Bundle\TransportBundle\Transport\Email;
 use Ds\Bundle\TransportBundle\Transport\AbstractTransport;
 use Ds\Bundle\TransportBundle\Model\Message;
 use Ds\Bundle\TransportBundle\Entity\Profile;
+use Oro\Bundle\EmailBundle\Model\EmailHolderInterface;
+use Oro\Bundle\LocaleBundle\Model\FirstNameInterface;
+use Oro\Bundle\LocaleBundle\Model\LastNameInterface;
 use UnexpectedValueException;
 
 /**
@@ -19,12 +22,23 @@ class MailTransport extends AbstractTransport
     {
         $profile = $profile ?: $this->profile;
         $message->setFrom($profile->getData('from'));
-        $success = mail($message->getTo(), $message->getTitle(), $message->getContent(), 'From: ' . $message->getFrom());
 
-        if (!$success) {
-            //throw new UnexpectedValueException('Message could not be sent.');
+        /** @var EmailHolderInterface|FirstNameInterface|LastNameInterface $recipient */
+        $recipient = $message->getRecipient();
+
+        $success = mail($recipient->getEmail(), $message->getTitle(), $message->getContent(), 'From: ' . $message->getFrom());
+
+
+        if ($success) {
+            $message->setDeliveryStatus(Message::STATUS_SENT);
+            $message->setSentAt(new \DateTime);
+        }
+        else
+        {
+            $message->setDeliveryStatus(Message::STATUS_FAILED);
         }
 
-        return $this;
+
+        return $message;
     }
 }
