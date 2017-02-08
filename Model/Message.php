@@ -2,11 +2,17 @@
 
 namespace Ds\Bundle\TransportBundle\Model;
 
+use Oro\Bundle\UserBundle\Entity\User;
+
+use Ds\Bundle\EntityBundle\Entity\Attribute;
+
 /**
  * Class Message
  */
 class Message
 {
+    use Attribute\Data;
+
     /**
      * @var string
      */
@@ -126,4 +132,65 @@ class Message
     }
 
     # endregion
+
+    /**
+     * @var \Oro\Bundle\UserBundle\Entity\User
+     */
+    protected $user; # region accessors
+
+    /**
+     * Set user
+     *
+     * @param \Oro\Bundle\UserBundle\Entity\User $user
+     * @return \Ds\Bundle\TransportBundle\Model\Message
+     */
+    public function setUser(User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Oro\Bundle\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    # endregion
+
+    /**
+     * @var string
+     */
+    protected $template; # region accessors
+
+    /**
+     * Set template
+     *
+     * @param string $template
+     * @return object
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+
+        return $this;
+    }
+
+    /**
+     * Get template
+     *
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    # endregion
+
 }
