@@ -2,6 +2,9 @@
 
 The Transport bundle provides the developers the foundation and common API for sending messages programmatically. It introduces two new entities to the system: [Transport](Entity/Transport.php) and [Profile](Entity/Profile.php).
 
+[![Code Climate](https://codeclimate.com/github/DigitalState/Platform-Transport-Bundle/badges/gpa.svg)](https://codeclimate.com/github/DigitalState/Platform-Transport-Bundle)
+[![Test Coverage](https://codeclimate.com/github/DigitalState/Platform-Transport-Bundle/badges/coverage.svg)](https://codeclimate.com/github/DigitalState/Platform-Transport-Bundle/coverage)
+
 ## Table of Contents
 
 - [Transport Entity](#transport-entity)
