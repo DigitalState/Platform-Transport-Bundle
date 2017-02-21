@@ -1,4 +1,4 @@
-datagrid:
+datagrids:
     ds-transport-profile:
         extended_entity_name: Ds\Bundle\TransportBundle\Entity\Profile
         source:
@@ -81,7 +81,7 @@ datagrid:
                 type: navigate
                 label: ds.transport.profile.grid.actions.view
                 link: view_link
-                icon: eye-open
+                icon: eye
                 acl_resource: ds.transport.profile.view
                 rowAction: true
             update:
@@ -167,7 +167,7 @@ datagrid:
                 type: navigate
                 label: ds.transport.grid.actions.view
                 link: view_link
-                icon: eye-open
+                icon: eye
                 acl_resource: ds.transport.transport.view
                 rowAction: true
             update:
